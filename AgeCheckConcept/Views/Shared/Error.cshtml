@@ -1,0 +1,23 @@
+﻿@model AgeCheckConcept.Models.ErrorViewModel
+
+<div class="view-title-container">
+    <h1 class="view-title"><i class="fa fa-fw fa-exclamation-triangle"></i> An error occurred</h1>
+</div>
+
+<p class="text-hint">
+    Sorry, but there was an error while processing the last request. Detils follow below.
+</p>
+
+<hr />
+
+<a asp-action="Verify" class="btn"><i class="fa fa-fw fa-chevron-left"></i> Return to landing page</a>
+
+<p>
+    <b>Error message:</b>
+    @Model.ErrorMessage
+</p>
+
+<p>
+    <b>Error details:</b>
+    @Model.ErrorDetail
+</p>

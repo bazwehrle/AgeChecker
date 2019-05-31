@@ -1,0 +1,104 @@
+﻿@model IEnumerable<AgeCheckConcept.Models.AccessLog>
+
+<div class="view-title-container">
+    <h1 class="view-title"><i class="fa fa-fw fa-list-alt"></i> Access Logs</h1>
+</div>
+
+<a asp-action="Verify" class="btn"><i class="fa fa-fw fa-chevron-left"></i> Return to landing page</a>
+
+<hr />
+
+<p class="text-hint">
+    Filter current table data by user name/email address: <input type="text" id="tb_filter" class="form-control" placeholder="Type to filter" />
+</p>
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>
+                <div class="sortable-container">
+                    @Html.DisplayNameFor(model => model.IsSuccess)
+                    <div class="sort-icons">
+                        <a asp-action="Index" asp-route-sortField="IsSuccess" asp-route-sortOrder="asc"><i class="fa fa-fw fa-chevron-up"></i></a>
+                        <a asp-action="Index" asp-route-sortField="IsSuccess" asp-route-sortOrder="desc"><i class="fa fa-fw fa-chevron-down"></i></a>
+                    </div>
+                </div>
+            </th>
+            <th>
+                <div class="sortable-container">
+                    @Html.DisplayNameFor(model => model.IsLockedOut)
+                    <div class="sort-icons">
+                        <a asp-action="Index" asp-route-sortField="IsLockedOut" asp-route-sortOrder="asc"><i class="fa fa-fw fa-chevron-up"></i></a>
+                        <a asp-action="Index" asp-route-sortField="IsLockedOut" asp-route-sortOrder="desc"><i class="fa fa-fw fa-chevron-down"></i></a>
+                    </div>
+                </div>
+            </th>
+            <th>
+                <div class="sortable-container">
+                    @Html.DisplayNameFor(model => model.SubmittedDateTime)
+                    <div class="sort-icons">
+                        <a asp-action="Index" asp-route-sortField="SubmittedDateTime" asp-route-sortOrder="asc"><i class="fa fa-fw fa-chevron-up"></i></a>
+                        <a asp-action="Index" asp-route-sortField="SubmittedDateTime" asp-route-sortOrder="desc"><i class="fa fa-fw fa-chevron-down"></i></a>
+                    </div>
+                </div>
+            </th>
+            <th>
+                <div class="sortable-container">
+                    @Html.DisplayNameFor(model => model.UserName)
+                    <div class="sort-icons">
+                        <a asp-action="Index" asp-route-sortField="UserName" asp-route-sortOrder="asc"><i class="fa fa-fw fa-chevron-up"></i></a>
+                        <a asp-action="Index" asp-route-sortField="UserName" asp-route-sortOrder="desc"><i class="fa fa-fw fa-chevron-down"></i></a>
+                    </div>
+                </div>
+            </th>
+            <th>
+                <div class="sortable-container">
+                    @Html.DisplayNameFor(model => model.EmailAddress)
+                    <div class="sort-icons">
+                        <a asp-action="Index" asp-route-sortField="EmailAddress" asp-route-sortOrder="asc"><i class="fa fa-fw fa-chevron-up"></i></a>
+                        <a asp-action="Index" asp-route-sortField="EmailAddress" asp-route-sortOrder="desc"><i class="fa fa-fw fa-chevron-down"></i></a>
+                    </div>
+                </div>
+            </th>
+            <th>
+                <div class="sortable-container">
+                    @Html.DisplayNameFor(model => model.DOB)
+                    <div class="sort-icons">
+                        <a asp-action="Index" asp-route-sortField="DOB" asp-route-sortOrder="asc"><i class="fa fa-fw fa-chevron-up"></i></a>
+                        <a asp-action="Index" asp-route-sortField="DOB" asp-route-sortOrder="desc"><i class="fa fa-fw fa-chevron-down"></i></a>
+                    </div>
+                </div>
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @if (item.IsSuccess) { <i class="fa fa-fw fa-check-circle text-yep"></i> }
+                else { <i class="fa fa-fw fa-times-circle text-nope"></i> }
+            </td>
+            <td>
+                @if (item.IsLockedOut) { <i class="fa fa-fw fa-lock text-nope"></i> }
+                else { <i class="fa fa-fw fa-lock-open text-yep"></i> }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SubmittedDateTime)
+            </td>
+            <td class="text-filter">
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td class="text-filter">
+                @Html.DisplayFor(modelItem => item.EmailAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DOB)
+            </td>
+            <td>
+                <a asp-action="Delete" asp-route-id="@item.AccessLogId" class="btn-icon"><i class="fa fa-fw fa-trash-alt"></i></a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

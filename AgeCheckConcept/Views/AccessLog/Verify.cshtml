@@ -1,0 +1,54 @@
+﻿@model AgeCheckConcept.Models.AccessLog
+
+<div class="view-title-container">
+    <h1 class="view-title"><i class="fa fa-fw fa-user-shield"></i> Age Verification</h1>
+</div>
+
+<p class="text-hint">
+    Enter your details and click Submit
+</p>
+
+@if (Model != null && !Model.IsSuccess)
+{
+    <p class="text-nope">
+        <i class="fa fa-fw fa-exclamation-circle"></i>
+        Access Denied. You must be at least 18 to access this site.
+    </p>
+}
+@if (Model != null && Model.IsLockedOut)
+{
+    <p class="text-nope">
+        <i class="fa fa-fw fa-exclamation-circle"></i>
+        Your account has been locked out due to repeated failed attempts. Please contact your administrator.
+    </p>
+}
+
+<hr />
+
+<div class="form-container">
+    <form asp-action="AgeCheck" id="form_verify">
+        <div asp-validation-summary="ModelOnly" class="text-nope"></div>
+        <div class="form-group">
+            <label asp-for="UserName" class="control-label"></label>
+            <input asp-for="UserName" class="form-control" />
+            <span asp-validation-for="UserName" class="val-end text-nope"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="EmailAddress" class="control-label"></label>
+            <input asp-for="EmailAddress" class="form-control" />
+            <span asp-validation-for="EmailAddress" class="val-end text-nope"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="DOB" class="control-label"></label>
+            <input asp-for="DOB" type="date" class="form-control" />
+            <span asp-validation-for="DOB" class="val-end text-nope"></span>
+        </div>
+        <div class="form-buttons">
+            <input type="submit" value="Submit" class="btn btn-submit" />
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

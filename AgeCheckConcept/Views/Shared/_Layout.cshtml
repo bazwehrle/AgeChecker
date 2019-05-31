@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AgeCheckConcept</title>
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" 
+          integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div>
+                <a asp-area="" asp-controller="AccessLog" asp-action="AgeCheck">AgeCheckConcept</a>
+            </div>
+        </nav>
+    </header>
+
+    <div class="layout-container">
+        <main role="main">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            &copy; 2019 - AgeCheckConcept | Demo Age Check Website
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
